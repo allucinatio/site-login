@@ -6,8 +6,18 @@
   </head>
   <body>
     <!-- The root page should show that they are logged in and what username they are logged in as. -->
+    <div>
+      <p>
+        Logged in as <strong> {{username}} </strong>
+      </p>
+    </div>
+    <div>
+      <form action="/logout" method="post">
+        Log out: <input type="submit">
+      </form>
+    </div>
 
-    Logged in as <strong> {{username}} </strong> 
+
 
   </body>
 </html>

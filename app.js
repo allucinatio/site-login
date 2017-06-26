@@ -44,6 +44,11 @@ function checkAuthentication(req, res, username){
   }
 }
 
+function logout(req, res){
+  req.session.authenticated = false;
+  return res.render('login');
+}
+
 // check and see if user is authenticated at root, if not, redirect to login
 
 app.get('/', function(req, res, username) {
@@ -56,9 +61,13 @@ app.get('/login', function(req, res) {
 
 
 app.post('/', function(req, res){
-  authenticate(req);
+  authenticate(req, res);
   checkAuthentication(req, res);
 });
+
+app.post('/logout', function(req, res){
+  logout(req, res);
+})
 
 app.listen(3000, function(){
   console.log('Started express application!')
